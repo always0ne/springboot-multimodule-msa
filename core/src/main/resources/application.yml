@@ -6,7 +6,7 @@ log:
   level: ERROR
   slack:
     enabled: true
-    webHookUrl: "https://hooks.slack.com/services/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"
+    webHookUrl: "Slack Webhook URL"
     channel: error-report-bot
     userName: "[API]ErrorReportBot"
   database:
