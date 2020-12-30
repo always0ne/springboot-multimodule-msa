@@ -1,0 +1,41 @@
+spring:
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+jwt:
+  secretKey: "This Data Must Be Managed By Secret NOT HERE THIS IS JUST EXAMPLE"
+
+log:
+  serverName: "Rest Api Template"
+  level: ERROR
+  slack:
+    enabled: true
+    webHookUrl: "Slack Webhook URL"
+    channel: error-report-bot
+    userName: "[API]ErrorReportBot"
+  database:
+    enabled: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
