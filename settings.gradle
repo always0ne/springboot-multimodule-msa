@@ -1,1 +1,10 @@
-rootProject.name = 'template'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'root'
+include 'core'
+include 'api'
+

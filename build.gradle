@@ -1,117 +1,75 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.4.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id "org.asciidoctor.convert" version "1.5.9.2"
-	id 'jacoco'
-	id 'checkstyle'
-	id 'java'
-}
-
-group = 'com.restapi'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
-
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
-
-//DataBase
-	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-
-//for Slack Logback
-	compile 'net.gpedro.integrations.slack:slack-webhook:1.4.0'
-	implementation 'org.apache.commons:commons-text:1.8'
-	compile 'eu.bitwalker:UserAgentUtils:1.21'
-
-//for JWt Auth
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	testImplementation 'org.springframework.security:spring-security-test'
-	compile 'io.jsonwebtoken:jjwt-api:0.11.2'
-	runtime 'io.jsonwebtoken:jjwt-impl:0.11.2',
-			'io.jsonwebtoken:jjwt-jackson:0.11.2'
-
-// Test And RestDocs
-	asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
-	testCompile 'org.springframework.restdocs:spring-restdocs-mockmvc'
-	testCompile 'pl.pragmatists:JUnitParams:1.1.1'
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude module: 'junit'
-	}
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
 }
 
 ext {
-	set('snippetsDir', file("build/generated-snippets"))
-	set('outputsDir',file("build/generated-docs"))
-	set('docsDir',file("docs"))
+    springBootVersion = "2.4.1"
 }
 
-jacoco {
-	toolVersion = "0.8.5"
-	reportsDir = file("$buildDir/JacocoReportDir")
+
+repositories {
+    mavenCentral()
 }
 
-test {
-	outputs.dir snippetsDir
-	useJUnitPlatform()
-	finalizedBy jacocoTestReport
+dependencies {
+    implementation "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    implementation "io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE"
 }
 
-jacocoTestReport {
-	dependsOn test // tests are required to run before generating the report
-	reports {
-		xml.enabled true
-		html.destination file("${buildDir}/jacocoHtml")
-	}
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+
+    group = 'com.multimodule'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = '11'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        compile 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+
+//DataBase
+        runtimeOnly 'com.h2database:h2'
+
+// Test And RestDocs
+        testCompile 'pl.pragmatists:JUnitParams:1.1.1'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.2.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.2.0'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude module: 'junit'
+        }
+    }
 }
 
-checkstyle {
-	maxWarnings = 0
-	showViolations = true
-	configFile = file("${rootDir}/checkstyle.xml")
-	toolVersion = '8.36.2'
+project(':core'){
+    dependencies {
+//for Slack Logback
+        compile 'net.gpedro.integrations.slack:slack-webhook:1.4.0'
+        implementation 'org.apache.commons:commons-text:1.8'
+        compile 'eu.bitwalker:UserAgentUtils:1.21'
+
+//for JWt Auth
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        testImplementation 'org.springframework.security:spring-security-test'
+        compile 'io.jsonwebtoken:jjwt-api:0.11.2'
+        runtime 'io.jsonwebtoken:jjwt-impl:0.11.2',
+                'io.jsonwebtoken:jjwt-jackson:0.11.2'
+    }
 }
 
-asciidoctor {
-	inputs.dir snippetsDir
-	dependsOn test
-}
-
-task copyRestDocs(type: Copy) {
-	dependsOn asciidoctor
-	from "${asciidoctor.outputDir}/html5"
-	into "${sourceSets.main.output.resourcesDir}/static/docs"
-	from "${asciidoctor.outputDir}/html5"
-	into "${docsDir}"
-	rename{
-		String fileName->
-			fileName.replace("index.html","ApiDocs.html")
-	}
-}
-
-bootJar {
-	dependsOn copyRestDocs
-}
-
-allprojects {
-	gradle.projectsEvaluated {
-		tasks.withType(JavaCompile) {
-			options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-		}
-	}
+project(':api'){
+    dependencies {
+        compile project(':core')
+    }
 }

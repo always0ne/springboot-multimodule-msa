@@ -1,5 +1,5 @@
-# Contributing to SpringBootRestApiTemplate
-Thank you for contributing to SpringBootRestApiTemplate
+# Contributing to springboot-multimodule-msa
+Thank you for contributing to springboot-multimodule-msa
 We have some rules to contribute this project
 
 1. [Commit](#commit)
@@ -36,7 +36,7 @@ We have some rules to contribute this project
 - check code conventions before commit
 
 ### update Class Document
-please update and commit [Class Document](https://always0ne.github.io/SpringBootRestApiTemplate/) once alone before pull request
+please update and commit [Class Document](https://always0ne.github.io/springboot-multimodule-msa/) once alone before pull request
   
 ## Developer Certificate of Origin
 Version 1.1

@@ -1,0 +1,13 @@
+jwt:
+  secretKey: "This Data Must Be Managed By Secret NOT HERE THIS IS JUST EXAMPLE"
+
+log:
+  serverName: "Multimodule Samples"
+  level: ERROR
+  slack:
+    enabled: true
+    webHookUrl: "https://hooks.slack.com/services/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"
+    channel: error-report-bot
+    userName: "[API]ErrorReportBot"
+  database:
+    enabled: true

@@ -1,4 +1,4 @@
-# SpringBootRestApiTemplate
+# springboot-multimodule-msa
 ## Index
   - [Overview](#overview) 
   - [Getting Started](#getting-started)
@@ -8,18 +8,18 @@
   - [Deployment](#deployment)
   - [Used or Referenced Projects](Used-or-Referenced-Projects)
 
-## About SpringBootRestApiTemplate
+## About springboot-multimodule-msa
 This Project is for Quick Start Spring boot Restful Api Server  
 This project provides a simple community functions.
 
 ## Overview
 ### Provide Features
-- Community Api - See [Rest Api Docs](https://always0ne.github.io/SpringBootRestApiTemplate/ApiDocs.html)
+- Community Api - See [Rest Api Docs](https://always0ne.github.io/springboot-multimodule-msa/ApiDocs.html)
 - Error Report System(to SLACK)
 - JWT Authentication(use AccessToken and RefreshToken)
 - Pull Request Auto BuildTest
 - Build Docker image when merged develop(`test`) and master(`release`) branch
-- [Class Document](https://always0ne.github.io/SpringBootRestApiTemplate/)  
+- [Class Document](https://always0ne.github.io/springboot-multimodule-msa/)  
 
 ### ErrorCode Rules
 ```
@@ -42,13 +42,13 @@ this project build docker image automatically so deploy on docker
 ```shell script
 sudo docker run -d  -p 8080:8080 --name=testserver \
 -v /etc/localtime:/etc/localtime:ro  -e TZ=Asia/Seoul  --restart=unless-stopped \
-docker.pkg.github.com/always0ne/springbootrestapitemplate/test:version
+docker.pkg.github.com/always0ne/springboot-multimodule-msa/test:version
 ```
 - deploy running server(master branch)
 ```shell script
 sudo docker run -d  -p 8080:8080 --name=server \
 -v /etc/localtime:/etc/localtime:ro  -e TZ=Asia/Seoul  --restart=unless-stopped \
-docker.pkg.github.com/always0ne/springbootrestapitemplate/release:version
+docker.pkg.github.com/always0ne/springboot-multimodule-msa/release:version
 ```
 ## Contributing
 
@@ -59,7 +59,7 @@ of conduct, and the process for submitting pull requests to us.
 ## Authors
   - [Always0ne](https://github.com/Always0ne) - **SangIl Hwang** - <si8363@soongsil.ac.kr>
 
-See also the list of [contributors](https://github.com/always0ne/SpringBootRestApiTemplate/contributors)
+See also the list of [contributors](https://github.com/always0ne/springboot-multimodule-msa/contributors)
 who participated in this project.
 ## Used or Referenced Projects
  - [spring-logback-slack-notification-example](https://github.com/brant-hwang/spring-logback-slack-notification-example) - **LICENSE ?** 
