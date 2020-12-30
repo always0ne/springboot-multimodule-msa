@@ -24,7 +24,7 @@ jobs:
       run: chmod +x gradlew
       ## Build Project
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew api:build
       # Docker Package 배포
     - name: Publish Image
       uses: matootie/github-docker@v3.0.0
