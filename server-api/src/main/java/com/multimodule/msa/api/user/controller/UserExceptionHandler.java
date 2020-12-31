@@ -10,21 +10,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-/**
- * 사용자 서비스에서 발생하는 Exception Handler
- *
- * @author always0ne
- * @version 1.0
- */
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class UserExceptionHandler {
-    /**
-     * 존재하지 않거나 제제된 화원입니다.
-     *
-     * @param exception 없는 댓글 예외
-     * @return NOT_FOUND
-     */
+
     @ExceptionHandler(InvalidUserException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody

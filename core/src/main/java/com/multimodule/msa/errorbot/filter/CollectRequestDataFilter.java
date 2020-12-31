@@ -10,12 +10,6 @@ import java.io.IOException;
 import static com.multimodule.msa.errorbot.util.AgentUtils.getAgentDetail;
 import static com.multimodule.msa.errorbot.util.MdcUtil.*;
 
-/**
- * Request 정보들을 수집하여 MDC에 보관하는 필터.
- *
- * @author always0ne
- * @version 1.0
- */
 public class CollectRequestDataFilter implements Filter {
 
   @Override

@@ -1,15 +1,9 @@
 package com.multimodule.msa.api.user.service;
 
-import com.multimodule.msa.api.user.data.UsersRepository;
+import com.multimodule.msa.api.user.model.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-/**
- * 사용자 서비스
- *
- * @author always0ne
- * @version 1.0
- */
 @Service
 @RequiredArgsConstructor
 public class UserService {

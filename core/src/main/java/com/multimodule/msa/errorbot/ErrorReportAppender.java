@@ -18,24 +18,12 @@ import static com.multimodule.msa.errorbot.util.JsonUtils.toPrettyJson;
 import static com.multimodule.msa.errorbot.util.MdcUtil.*;
 import static org.apache.commons.text.StringEscapeUtils.unescapeJava;
 
-/**
- * Logging Event를 감지하여 설정한 레벨이상의 로그를 알림.
- *
- * @author always0ne
- * @version 1.0
- */
 @RequiredArgsConstructor
 public class ErrorReportAppender extends UnsynchronizedAppenderBase<ILoggingEvent> {
 
   private final LogConfig logConfig;
   private final ErrorLogsRepository errorLogsRepository;
 
-  /**
-   * 이벤트를 감지했을 때 설정한 레벨의 이상인지 확인한 후, <br>
-   * DB에 저장, Slack채널에 알림 옵션에 맞게 동작한다.
-   *
-   * @param eventObject 로깅 이벤트
-   */
   @Override
   protected void append(ILoggingEvent eventObject) {
     if (eventObject.getLevel().isGreaterOrEqual(logConfig.getLevel())) {
@@ -57,14 +45,6 @@ public class ErrorReportAppender extends UnsynchronizedAppenderBase<ILoggingEven
     }
   }
 
-  /**
-   * Slack 메시지 제작 후 설정된 채널로 알림메시지를 전송한다.<br>
-   * - 전달되는 Data <br>
-   * Error Message, Stack Trace, URL, Parameter, Header, Body,
-   * UserInfo, User Agent, Time, Server Name, Server OS, Server Host Name
-   *
-   * @param errorLog 에러 정보
-   */
   private void sendSlackMessage(ErrorLogs errorLog) {
     errorLog.markAsAlert();
 
@@ -142,14 +122,6 @@ public class ErrorReportAppender extends UnsynchronizedAppenderBase<ILoggingEven
     new SlackApi(logConfig.getSlack().getWebHookUrl()).call(slackMessage);
   }
 
-  /**
-   * Slack Field 생성자 역할을 하는 메소드.
-   *
-   * @param title   필드 제목
-   * @param value   필드 값
-   * @param shorten 필드의 가로폭이 절반으로 좁혀지는지 여부
-   * @return SlackField
-   */
   private SlackField generateSlackField(String title, String value, Boolean shorten) {
     SlackField slackField = new SlackField();
     slackField.setTitle(title);

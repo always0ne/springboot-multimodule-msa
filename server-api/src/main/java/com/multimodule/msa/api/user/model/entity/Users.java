@@ -1,6 +1,6 @@
-package com.multimodule.msa.api.user.data;
+package com.multimodule.msa.api.user.model.entity;
 
-import com.multimodule.msa.api.auth.data.Account;
+import com.multimodule.msa.api.auth.model.Account;
 import com.multimodule.msa.authentication.UserRole;
 import com.multimodule.msa.authentication.UserStatus;
 import lombok.Builder;

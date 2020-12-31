@@ -9,20 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Agent정보를 추출하는 모듈.
- *
- * @author always0ne
- * @version 1.0
- */
 public class AgentUtils {
 
-  /**
-   * UserAgent 정보 매핑.
-   *
-   * @param request 요청 정보
-   * @return 매핑된 User Agent 정보
-   */
   public static Map<String, String> getAgentDetail(HttpServletRequest request) {
     Map<String, String> agentDetail = new HashMap<>();
     UserAgent agent = getUserAgent(request);
@@ -33,12 +21,6 @@ public class AgentUtils {
     return agentDetail;
   }
 
-  /**
-   * 헤더에서 User-Agent 정보 추출.
-   *
-   * @param request 요청 정보
-   * @return User Agent 정보
-   */
   public static UserAgent getUserAgent(HttpServletRequest request) {
     try {
       return UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
@@ -47,12 +29,6 @@ public class AgentUtils {
     }
   }
 
-  /**
-   * 헤더에서 접속자의 OS 정보 추출.
-   *
-   * @param userAgent   사용자 정보
-   * @param agentDetail UserAgent 를 매핑할 객체
-   */
   public static void getUserOsInfo(UserAgent userAgent, Map<String, String> agentDetail) {
     OperatingSystem operatingSystem = OperatingSystem.UNKNOWN;
     if (userAgent != null && userAgent.getOperatingSystem() != null) {
@@ -64,12 +40,6 @@ public class AgentUtils {
     agentDetail.put("manufacturer", operatingSystem.getManufacturer().toString());
   }
 
-  /**
-   * 헤더에서 접속자 브라우저 정보 추출.
-   *
-   * @param userAgent   사용자 정보
-   * @param agentDetail UserAgent 를 매핑할 객체
-   */
   public static void getBrowserInfo(UserAgent userAgent, Map<String, String> agentDetail) {
     Browser browser = Browser.UNKNOWN;
     Version version = new Version("0", "0", "0");

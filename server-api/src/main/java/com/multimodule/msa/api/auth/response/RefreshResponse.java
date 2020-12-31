@@ -16,8 +16,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class RefreshResponse {
-    /**
-     * accessToken
-     */
     private String accessToken;
 }

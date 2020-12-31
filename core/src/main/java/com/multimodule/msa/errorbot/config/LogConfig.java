@@ -6,13 +6,6 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-
-/**
- * 에러로그 수집기 설정.
- *
- * @author always0ne
- * @version 1.0
- */
 @Component
 @Getter
 @Setter
