@@ -41,6 +41,9 @@ subprojects {
 
 //DataBase
         runtimeOnly 'com.h2database:h2'
+//Security
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        testImplementation 'org.springframework.security:spring-security-test'
 
 // Test And RestDocs
         testCompile 'pl.pragmatists:JUnitParams:1.1.1'
@@ -60,8 +63,6 @@ project(':core'){
         compile 'eu.bitwalker:UserAgentUtils:1.21'
 
 //for JWt Auth
-        implementation 'org.springframework.boot:spring-boot-starter-security'
-        testImplementation 'org.springframework.security:spring-security-test'
         compile 'io.jsonwebtoken:jjwt-api:0.11.2'
         runtime 'io.jsonwebtoken:jjwt-impl:0.11.2',
                 'io.jsonwebtoken:jjwt-jackson:0.11.2'

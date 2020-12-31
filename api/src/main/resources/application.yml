@@ -2,12 +2,12 @@ jwt:
   secretKey: "This Data Must Be Managed By Secret NOT HERE THIS IS JUST EXAMPLE"
 
 log:
-  serverName: "Multimodule"
+  serverName: "Api Server"
   level: ERROR
   slack:
     enabled: true
     webHookUrl: "slack webhook URL"
     channel: error-report-bot
-    userName: "[CORE]ErrorReportBot"
+    userName: "[API]ErrorReportBot"
   database:
     enabled: true
