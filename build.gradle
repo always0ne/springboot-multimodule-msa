@@ -69,7 +69,13 @@ project(':core'){
     }
 }
 
-project(':api'){
+project(':server-api'){
+    dependencies {
+        compile project(':core')
+    }
+}
+
+project(':server-admin'){
     dependencies {
         compile project(':core')
     }
