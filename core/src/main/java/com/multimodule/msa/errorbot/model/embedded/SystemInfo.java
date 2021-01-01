@@ -1,4 +1,4 @@
-package com.multimodule.msa.errorbot.embedded;
+package com.multimodule.msa.errorbot.model.embedded;
 
 import ch.qos.logback.core.util.ContextUtil;
 import lombok.AllArgsConstructor;

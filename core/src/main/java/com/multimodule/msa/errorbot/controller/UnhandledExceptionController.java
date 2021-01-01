@@ -1,4 +1,4 @@
-package com.multimodule.msa.errorbot;
+package com.multimodule.msa.errorbot.controller;
 
 import com.multimodule.msa.response.ErrorResponse;
 import org.slf4j.Logger;

@@ -1,8 +1,8 @@
 package com.multimodule.msa.errorbot.config;
 
 import ch.qos.logback.classic.LoggerContext;
-import com.multimodule.msa.errorbot.ErrorLogsRepository;
-import com.multimodule.msa.errorbot.ErrorReportAppender;
+import com.multimodule.msa.errorbot.repository.ErrorLogsRepository;
+import com.multimodule.msa.errorbot.controller.ErrorReportAppender;
 import com.multimodule.msa.errorbot.filter.CollectRequestDataFilter;
 import com.multimodule.msa.errorbot.filter.MultiReadableHttpServletRequestFilter;
 import lombok.RequiredArgsConstructor;

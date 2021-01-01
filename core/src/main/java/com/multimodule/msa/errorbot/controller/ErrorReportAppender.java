@@ -1,8 +1,10 @@
-package com.multimodule.msa.errorbot;
+package com.multimodule.msa.errorbot.controller;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.UnsynchronizedAppenderBase;
 import com.multimodule.msa.errorbot.config.LogConfig;
+import com.multimodule.msa.errorbot.model.ErrorLogs;
+import com.multimodule.msa.errorbot.repository.ErrorLogsRepository;
 import lombok.RequiredArgsConstructor;
 import net.gpedro.integrations.slack.SlackApi;
 import net.gpedro.integrations.slack.SlackAttachment;

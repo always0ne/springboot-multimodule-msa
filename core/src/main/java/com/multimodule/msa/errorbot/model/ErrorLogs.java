@@ -1,9 +1,9 @@
-package com.multimodule.msa.errorbot;
+package com.multimodule.msa.errorbot.model;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import com.multimodule.msa.errorbot.embedded.ErrorInfo;
-import com.multimodule.msa.errorbot.embedded.RequestInfo;
-import com.multimodule.msa.errorbot.embedded.SystemInfo;
+import com.multimodule.msa.errorbot.model.embedded.ErrorInfo;
+import com.multimodule.msa.errorbot.model.embedded.RequestInfo;
+import com.multimodule.msa.errorbot.model.embedded.SystemInfo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;

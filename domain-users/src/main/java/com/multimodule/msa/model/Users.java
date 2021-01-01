@@ -2,7 +2,6 @@ package com.multimodule.msa.model;
 
 import com.multimodule.msa.authentication.UserRole;
 import com.multimodule.msa.authentication.UserStatus;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Getter
-@Builder
 @NoArgsConstructor
 public class Users extends Account {
 

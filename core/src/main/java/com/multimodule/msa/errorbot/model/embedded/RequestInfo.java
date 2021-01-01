@@ -1,4 +1,4 @@
-package com.multimodule.msa.errorbot.embedded;
+package com.multimodule.msa.errorbot.model.embedded;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

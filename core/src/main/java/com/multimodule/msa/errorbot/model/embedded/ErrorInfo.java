@@ -1,4 +1,4 @@
-package com.multimodule.msa.errorbot.embedded;
+package com.multimodule.msa.errorbot.model.embedded;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.StackTraceElementProxy;
