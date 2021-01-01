@@ -32,15 +32,14 @@ subprojects {
     }
 
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'org.springframework.boot:spring-boot-starter-hateoas'
         implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        runtimeOnly 'com.h2database:h2'
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
         compile 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
 
-//DataBase
-        runtimeOnly 'com.h2database:h2'
 //Security
         implementation 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.security:spring-security-test'
@@ -55,7 +54,7 @@ subprojects {
     }
 }
 
-project(':core'){
+project(':core') {
     dependencies {
 //for Slack Logback
         compile 'net.gpedro.integrations.slack:slack-webhook:1.4.0'
@@ -69,13 +68,20 @@ project(':core'){
     }
 }
 
-project(':server-api'){
+project(':api-main') {
     dependencies {
-        compile project(':core')
+        compile project(':domain-users')
     }
 }
 
-project(':server-admin'){
+project(':api-admin') {
+    dependencies {
+        compile project(':domain-users')
+    }
+}
+
+
+project(':domain-users') {
     dependencies {
         compile project(':core')
     }

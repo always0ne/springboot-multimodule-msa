@@ -6,5 +6,7 @@ pluginManagement {
 
 rootProject.name = 'root'
 include 'core'
-include 'server-api'
-include 'server-admin'
+include 'api-main'
+include 'api-admin'
+include 'domain-users'
+

@@ -1,0 +1,18 @@
+jwt:
+  secretKey: "This Data Must Be Managed By Secret NOT HERE THIS IS JUST EXAMPLE"
+log:
+  serverName: "Admin Server"
+  level: ERROR
+  slack:
+    enabled: true
+    webHookUrl: "slack webhook URL"
+    channel: error-report-bot
+    userName: "[ADMIN]ErrorReportBot"
+  database:
+    enabled: true
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

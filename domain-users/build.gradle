@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+bootJar{
+    enabled = false
+}
+jar{
+    enabled = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}

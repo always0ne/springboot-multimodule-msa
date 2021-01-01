@@ -7,11 +7,11 @@ on:
   pull_request:
     branches: [ develop, master ]
     paths:
-      - 'server-admin/**'
+      - 'api-admin/**'
   push:
     branches: [ develop, master ]
     paths:
-      - 'server-admin/**'
+      - 'api-admin/**'
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew server-admin:build
+      run: ./gradlew api-admin:build
 #    - name: Upload coverage to Codecov
 #      uses: codecov/codecov-action@v1
 #      with:
