@@ -9,47 +9,26 @@
   - [Used or Referenced Projects](Used-or-Referenced-Projects)
 
 ## About springboot-multimodule-msa
-This Project is for Quick Start Spring boot Restful Api Server  
-This project provides a simple community functions.
+멀티모듈로 MSA 서버를 구축할 수 있도록 하는 템플릿 프로젝트입니다.
 
-## Overview
-### Provide Features
-- Community Api - See [Rest Api Docs](https://always0ne.github.io/springboot-multimodule-msa/ApiDocs.html)
-- Error Report System(to SLACK)
-- JWT Authentication(use AccessToken and RefreshToken)
-- Pull Request Auto BuildTest
-- Build Docker image when merged develop(`test`) and master(`release`) branch
-- [Class Document](https://always0ne.github.io/springboot-multimodule-msa/)  
+## 시스템 구조
+### api - *
+어플리케이션 레이어입니다.  
+접근제어, 컨트롤러, request/response 를 관리합니다.
+### domain - *
+도메인 레이어입니다.  
+모델, 레포지터리, dto, 서비스들을 관리합니다.
+### core
+서버 전반적으로 사용하는 기능을 포함합니다.
 
-### ErrorCode Rules
-```
-account 	0000
-community	1000
-post		1100
-comment		1200
-system		2000
-   ```
+### CI/CD
+파일의 diff에 트리거를 두어 해당 커밋에 변경된 모듈만 CI/CD가 이루어지도록 하였습니다. 
+
 ## Getting Started
 ### Dependencies
 - JDK11
 - All dependencies are managed by gradle
-## Deployment
-this project build docker image automatically so deploy on docker
-### login github docker registry
-    sudo docker login https://docker.pkg.github.com --username [userName]
-### Deploy on server
-- deploy test server(develop branch)
-```shell script
-sudo docker run -d  -p 8080:8080 --name=testserver \
--v /etc/localtime:/etc/localtime:ro  -e TZ=Asia/Seoul  --restart=unless-stopped \
-docker.pkg.github.com/always0ne/springboot-multimodule-msa/test:version
-```
-- deploy running server(master branch)
-```shell script
-sudo docker run -d  -p 8080:8080 --name=server \
--v /etc/localtime:/etc/localtime:ro  -e TZ=Asia/Seoul  --restart=unless-stopped \
-docker.pkg.github.com/always0ne/springboot-multimodule-msa/release:version
-```
+
 ## Contributing
 
 If you see this project and have any points to improve or do not understand, please post any issues or Pull Requests.
